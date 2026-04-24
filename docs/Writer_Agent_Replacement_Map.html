@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Agentic Print — Agent Lifecycle &amp; Writer Coverage Map</title>
+<style>
+  :root {
+    --elevance: #582C83;
+    --ink: #1e293b;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --bg: #f8fafc;
+    --full: #16a34a;
+    --partial: #f59e0b;
+    --gap: #94a3b8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Arial, sans-serif;
+    margin: 0; padding: 24px;
+    background: var(--bg); color: var(--ink);
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  h1 { color: var(--elevance); font-size: 22px; margin: 0 0 4px; letter-spacing: -0.2px; }
+  .sub { color: var(--muted); font-size: 13px; margin: 0 0 16px; }
+  .toggle {
+    display: inline-flex;
+    border: 1px solid #cbd5e1; border-radius: 6px;
+    overflow: hidden; margin-bottom: 14px; background: white;
+  }
+  .toggle button {
+    padding: 9px 18px; background: white; border: none; cursor: pointer;
+    font-size: 13px; color: #475569; font-weight: 600;
+    border-right: 1px solid #cbd5e1;
+  }
+  .toggle button:last-child { border-right: none; }
+  .toggle button.active { background: var(--elevance); color: white; }
+  .card {
+    background: white; border: 1px solid var(--line); border-radius: 8px;
+    padding: 18px;
+  }
+  .view { display: none; }
+  .view.active { display: block; }
+  .svg-host { width: 100%; }
+  svg { width: 100%; height: auto; display: block; font-family: -apple-system, "Segoe UI", Arial, sans-serif; }
+  .legend-row {
+    display: flex; flex-wrap: wrap; gap: 18px;
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 12px; color: #334155;
+  }
+  .lg { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(0,0,0,0.08); }
+  .footnote { font-size: 11px; color: var(--muted); margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Agentic Print — Agent Lifecycle &amp; Writer Coverage Map</h1>
+  <p class="sub">All 17 agents organized by lifecycle phase. Toggle the second view to see where Writer can fully or partially replace an agent.</p>
+
+  <div class="toggle" role="tablist">
+    <button id="btn-life" class="active">View 1 — Lifecycle (all 17 agents)</button>
+    <button id="btn-writer">View 2 — Writer coverage overlay</button>
+  </div>
+
+  <div class="card">
+
+    <!-- VIEW 1 — LIFECYCLE -->
+    <div id="view-life" class="view active">
+      <div class="svg-host">
+        <svg viewBox="0 0 1200 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent lifecycle">
+          <defs>
+            <marker id="arrowL" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#582C83"/>
+            </marker>
+          </defs>
+
+          <!-- LIFECYCLE TITLE -->
+          <text x="600" y="20" text-anchor="middle" font-size="11" fill="#582C83" font-weight="700" letter-spacing="2">CORRESPONDENCE LIFECYCLE</text>
+
+          <!-- PHASE HEADER PILLS (one per column, no arrow line through text) -->
+          <g>
+            <rect x="42"  y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="142" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">DISCOVER &amp; GOVERN</text>
+            <rect x="282" y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="382" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">AUTHOR &amp; DESIGN</text>
+            <rect x="522" y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="622" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">VALIDATE</text>
+            <rect x="762" y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="862" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">EXECUTE</text>
+            <rect x="982" y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="1082" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">MEASURE &amp; OPTIMIZE</text>
+          </g>
+
+          <!-- LIFECYCLE FLOW ARROW (between phase pills) -->
+          <line x1="248" y1="46" x2="276" y2="46" stroke="#582C83" stroke-width="1.5" marker-end="url(#arrowL)"/>
+          <line x1="488" y1="46" x2="516" y2="46" stroke="#582C83" stroke-width="1.5" marker-end="url(#arrowL)"/>
+          <line x1="728" y1="46" x2="756" y2="46" stroke="#582C83" stroke-width="1.5" marker-end="url(#arrowL)"/>
+          <line x1="964" y1="46" x2="980" y2="46" stroke="#582C83" stroke-width="1.5" marker-end="url(#arrowL)"/>
+
+          <!-- ============ COLUMN 1: DISCOVER & GOVERN ============ -->
+          <!-- 01 Template Rationalization -->
+          <g>
+            <rect x="42"  y="100" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="42"  y="100" width="6"   height="76" fill="#2563eb"/>
+            <text x="58"  y="124" font-size="11" fill="#64748b" font-weight="600">AGENT 01</text>
+            <text x="58"  y="146" font-size="13" font-weight="700" fill="#0f172a">Template Rationalization</text>
+            <text x="58"  y="164" font-size="11" fill="#64748b">Template Management</text>
+          </g>
+          <!-- 13 Business Rules -->
+          <g>
+            <rect x="42"  y="186" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="42"  y="186" width="6"   height="76" fill="#7c3aed"/>
+            <text x="58"  y="210" font-size="11" fill="#64748b" font-weight="600">AGENT 13</text>
+            <text x="58"  y="232" font-size="13" font-weight="700" fill="#0f172a">Business Rules Engine</text>
+            <text x="58"  y="250" font-size="11" fill="#64748b">Operating Model</text>
+          </g>
+          <!-- 07 Print Traceability -->
+          <g>
+            <rect x="42"  y="272" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="42"  y="272" width="6"   height="76" fill="#0284c7"/>
+            <text x="58"  y="296" font-size="11" fill="#64748b" font-weight="600">AGENT 07</text>
+            <text x="58"  y="318" font-size="13" font-weight="700" fill="#0f172a">Print Traceability</text>
+            <text x="58"  y="336" font-size="11" fill="#64748b">Data &amp; Intelligence</text>
+          </g>
+          <!-- 11 Mandate Impact -->
+          <g>
+            <rect x="42"  y="358" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="42"  y="358" width="6"   height="76" fill="#d97706"/>
+            <text x="58"  y="382" font-size="11" fill="#64748b" font-weight="600">AGENT 11</text>
+            <text x="58"  y="404" font-size="13" font-weight="700" fill="#0f172a">Mandate Impact</text>
+            <text x="58"  y="422" font-size="11" fill="#64748b">Compliance</text>
+          </g>
+
+          <!-- ============ COLUMN 2: AUTHOR & DESIGN ============ -->
+          <g>
+            <rect x="282" y="100" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="282" y="100" width="6"   height="76" fill="#2563eb"/>
+            <text x="298" y="124" font-size="11" fill="#64748b" font-weight="600">AGENT 02</text>
+            <text x="298" y="146" font-size="13" font-weight="700" fill="#0f172a">Template Digitization</text>
+            <text x="298" y="164" font-size="11" fill="#64748b">Template Management</text>
+          </g>
+          <g>
+            <rect x="282" y="186" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="282" y="186" width="6"   height="76" fill="#16a34a"/>
+            <text x="298" y="210" font-size="11" fill="#64748b" font-weight="600">AGENT 05</text>
+            <text x="298" y="232" font-size="13" font-weight="700" fill="#0f172a">Tone &amp; Communication</text>
+            <text x="298" y="250" font-size="11" fill="#64748b">Member Experience</text>
+          </g>
+          <g>
+            <rect x="282" y="272" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="282" y="272" width="6"   height="76" fill="#16a34a"/>
+            <text x="298" y="296" font-size="11" fill="#64748b" font-weight="600">AGENT 12</text>
+            <text x="298" y="318" font-size="13" font-weight="700" fill="#0f172a">Brand Standards</text>
+            <text x="298" y="336" font-size="11" fill="#64748b">Member Experience</text>
+          </g>
+          <g>
+            <rect x="282" y="358" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="282" y="358" width="6"   height="76" fill="#d97706"/>
+            <text x="298" y="382" font-size="11" fill="#64748b" font-weight="600">AGENT 16</text>
+            <text x="298" y="404" font-size="13" font-weight="700" fill="#0f172a">Translation Governance</text>
+            <text x="298" y="422" font-size="11" fill="#64748b">Compliance</text>
+          </g>
+
+          <!-- ============ COLUMN 3: VALIDATE ============ -->
+          <g>
+            <rect x="522" y="100" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="522" y="100" width="6"   height="76" fill="#d97706"/>
+            <text x="538" y="124" font-size="11" fill="#64748b" font-weight="600">AGENT 03</text>
+            <text x="538" y="146" font-size="13" font-weight="700" fill="#0f172a">508(c) Detection</text>
+            <text x="538" y="164" font-size="11" fill="#64748b">Compliance</text>
+          </g>
+          <g>
+            <rect x="522" y="186" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="522" y="186" width="6"   height="76" fill="#d97706"/>
+            <text x="538" y="210" font-size="11" fill="#64748b" font-weight="600">AGENT 04</text>
+            <text x="538" y="232" font-size="13" font-weight="700" fill="#0f172a">508(c) Remediation</text>
+            <text x="538" y="250" font-size="11" fill="#64748b">Compliance</text>
+          </g>
+          <g>
+            <rect x="522" y="272" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="522" y="272" width="6"   height="76" fill="#7c3aed"/>
+            <text x="538" y="296" font-size="11" fill="#64748b" font-weight="600">AGENT 06</text>
+            <text x="538" y="318" font-size="13" font-weight="700" fill="#0f172a">Content Governance</text>
+            <text x="538" y="336" font-size="11" fill="#64748b">Operating Model</text>
+          </g>
+
+          <!-- ============ COLUMN 4: EXECUTE ============ -->
+          <g>
+            <rect x="762" y="100" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="762" y="100" width="6"   height="76" fill="#dc2626"/>
+            <text x="778" y="124" font-size="11" fill="#64748b" font-weight="600">AGENT 08</text>
+            <text x="778" y="146" font-size="13" font-weight="700" fill="#0f172a">Suppression &amp; Deflection</text>
+            <text x="778" y="164" font-size="11" fill="#64748b">Cost Reduction</text>
+          </g>
+          <g>
+            <rect x="762" y="186" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="762" y="186" width="6"   height="76" fill="#0284c7"/>
+            <text x="778" y="210" font-size="11" fill="#64748b" font-weight="600">AGENT 14</text>
+            <text x="778" y="232" font-size="13" font-weight="700" fill="#0f172a">Member History</text>
+            <text x="778" y="250" font-size="11" fill="#64748b">Data &amp; Intelligence</text>
+          </g>
+          <g>
+            <rect x="762" y="272" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="762" y="272" width="6"   height="76" fill="#ca8a04"/>
+            <text x="778" y="296" font-size="11" fill="#64748b" font-weight="600">AGENT 09</text>
+            <text x="778" y="318" font-size="13" font-weight="700" fill="#0f172a">Downstream QA</text>
+            <text x="778" y="336" font-size="11" fill="#64748b">Quality</text>
+          </g>
+          <g>
+            <rect x="762" y="358" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="762" y="358" width="6"   height="76" fill="#0d9488"/>
+            <text x="778" y="382" font-size="11" fill="#64748b" font-weight="600">AGENT 10</text>
+            <text x="778" y="404" font-size="13" font-weight="700" fill="#0f172a">Vendor Intelligence</text>
+            <text x="778" y="422" font-size="11" fill="#64748b">Procurement</text>
+          </g>
+
+          <!-- ============ COLUMN 5: MEASURE & OPTIMIZE ============ -->
+          <g>
+            <rect x="982" y="100" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="982" y="100" width="6"   height="76" fill="#0284c7"/>
+            <text x="998" y="124" font-size="11" fill="#64748b" font-weight="600">AGENT 15</text>
+            <text x="998" y="146" font-size="13" font-weight="700" fill="#0f172a">Cost Attribution</text>
+            <text x="998" y="164" font-size="11" fill="#64748b">Data &amp; Intelligence</text>
+          </g>
+          <g>
+            <rect x="982" y="186" width="200" height="76" rx="6" fill="white" stroke="#cbd5e1"/>
+            <rect x="982" y="186" width="6"   height="76" fill="#dc2626"/>
+            <text x="998" y="210" font-size="11" fill="#64748b" font-weight="600">AGENT 17</text>
+            <text x="998" y="232" font-size="13" font-weight="700" fill="#0f172a">Migration Prioritization</text>
+            <text x="998" y="250" font-size="11" fill="#64748b">Cost Reduction</text>
+          </g>
+
+          <!-- FEEDBACK LOOP -->
+          <path d="M 1058 470 Q 1058 510 600 510 Q 142 510 142 470"
+                fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,4"
+                marker-end="url(#arrowL)" opacity="0.7"/>
+          <text x="600" y="528" text-anchor="middle" font-size="11" fill="#64748b" font-style="italic">
+            continuous feedback — measurements and findings re-inform discovery, governance, and authoring
+          </text>
+        </svg>
+      </div>
+      <div class="legend-row">
+        <span class="lg"><span class="swatch" style="background:#2563eb"></span>Template Management</span>
+        <span class="lg"><span class="swatch" style="background:#d97706"></span>Compliance</span>
+        <span class="lg"><span class="swatch" style="background:#16a34a"></span>Member Experience</span>
+        <span class="lg"><span class="swatch" style="background:#7c3aed"></span>Operating Model</span>
+        <span class="lg"><span class="swatch" style="background:#0284c7"></span>Data &amp; Intelligence</span>
+        <span class="lg"><span class="swatch" style="background:#dc2626"></span>Cost Reduction</span>
+        <span class="lg"><span class="swatch" style="background:#ca8a04"></span>Quality</span>
+        <span class="lg"><span class="swatch" style="background:#0d9488"></span>Procurement</span>
+      </div>
+    </div>
+
+    <!-- VIEW 2 — WRITER COVERAGE OVERLAY -->
+    <div id="view-writer" class="view">
+      <div class="svg-host">
+        <svg viewBox="0 0 1200 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Writer coverage overlay">
+          <defs>
+            <marker id="arrowW" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#582C83"/>
+            </marker>
+            <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="6" stroke="#cbd5e1" stroke-width="2"/>
+            </pattern>
+          </defs>
+
+          <!-- LIFECYCLE TITLE -->
+          <text x="600" y="20" text-anchor="middle" font-size="11" fill="#582C83" font-weight="700" letter-spacing="2">CORRESPONDENCE LIFECYCLE  ·  WRITER REPLACEMENT POTENTIAL</text>
+
+          <!-- PHASE HEADER PILLS -->
+          <g>
+            <rect x="42"  y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="142" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">DISCOVER &amp; GOVERN</text>
+            <rect x="282" y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="382" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">AUTHOR &amp; DESIGN</text>
+            <rect x="522" y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="622" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">VALIDATE</text>
+            <rect x="762" y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="862" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">EXECUTE</text>
+            <rect x="982" y="32" width="200" height="28" rx="14" fill="#f3e8ff" stroke="#d8b4fe"/>
+            <text x="1082" y="51" text-anchor="middle" font-size="12" font-weight="700" fill="#582C83">MEASURE &amp; OPTIMIZE</text>
+          </g>
+
+          <!-- LIFECYCLE FLOW ARROWS (between phase pills) -->
+          <line x1="248" y1="46" x2="276" y2="46" stroke="#582C83" stroke-width="1.5" marker-end="url(#arrowW)"/>
+          <line x1="488" y1="46" x2="516" y2="46" stroke="#582C83" stroke-width="1.5" marker-end="url(#arrowW)"/>
+          <line x1="728" y1="46" x2="756" y2="46" stroke="#582C83" stroke-width="1.5" marker-end="url(#arrowW)"/>
+          <line x1="964" y1="46" x2="980" y2="46" stroke="#582C83" stroke-width="1.5" marker-end="url(#arrowW)"/>
+
+          <!-- COLUMN 1: all GAP -->
+          <g><rect x="42"  y="100" width="200" height="76" rx="6" fill="url(#hatch)" stroke="#94a3b8"/>
+             <rect x="42"  y="100" width="200" height="76" rx="6" fill="white" fill-opacity="0.65" stroke="#94a3b8"/>
+             <text x="58"  y="124" font-size="11" fill="#64748b" font-weight="600">AGENT 01</text>
+             <text x="58"  y="146" font-size="13" font-weight="700" fill="#475569">Template Rationalization</text>
+             <text x="58"  y="164" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+          <g><rect x="42"  y="186" width="200" height="76" rx="6" fill="white" stroke="#94a3b8"/>
+             <rect x="42"  y="186" width="200" height="76" rx="6" fill="url(#hatch)" fill-opacity="0.45"/>
+             <rect x="42"  y="186" width="200" height="76" rx="6" fill="none" stroke="#94a3b8"/>
+             <text x="58"  y="210" font-size="11" fill="#64748b" font-weight="600">AGENT 13</text>
+             <text x="58"  y="232" font-size="13" font-weight="700" fill="#475569">Business Rules Engine</text>
+             <text x="58"  y="250" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+          <g><rect x="42"  y="272" width="200" height="76" rx="6" fill="white" stroke="#94a3b8"/>
+             <rect x="42"  y="272" width="200" height="76" rx="6" fill="url(#hatch)" fill-opacity="0.45"/>
+             <rect x="42"  y="272" width="200" height="76" rx="6" fill="none" stroke="#94a3b8"/>
+             <text x="58"  y="296" font-size="11" fill="#64748b" font-weight="600">AGENT 07</text>
+             <text x="58"  y="318" font-size="13" font-weight="700" fill="#475569">Print Traceability</text>
+             <text x="58"  y="336" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+          <g><rect x="42"  y="358" width="200" height="76" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+             <text x="58"  y="382" font-size="11" fill="#92400e" font-weight="600">AGENT 11</text>
+             <text x="58"  y="404" font-size="13" font-weight="700" fill="#0f172a">Mandate Impact</text>
+             <text x="58"  y="422" font-size="10" font-weight="700" fill="#92400e" letter-spacing="1">PARTIAL — drafting only</text></g>
+
+          <!-- COLUMN 2: 02 partial, 05 full, 12 full, 16 partial -->
+          <g><rect x="282" y="100" width="200" height="76" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+             <text x="298" y="124" font-size="11" fill="#92400e" font-weight="600">AGENT 02</text>
+             <text x="298" y="146" font-size="13" font-weight="700" fill="#0f172a">Template Digitization</text>
+             <text x="298" y="164" font-size="10" font-weight="700" fill="#92400e" letter-spacing="1">PARTIAL — authoring only</text></g>
+          <g><rect x="282" y="186" width="200" height="76" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+             <text x="298" y="210" font-size="11" fill="#166534" font-weight="600">AGENT 05</text>
+             <text x="298" y="232" font-size="13" font-weight="700" fill="#0f172a">Tone &amp; Communication</text>
+             <text x="298" y="250" font-size="10" font-weight="700" fill="#166534" letter-spacing="1">FULL — Writer replaces</text></g>
+          <g><rect x="282" y="272" width="200" height="76" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+             <text x="298" y="296" font-size="11" fill="#166534" font-weight="600">AGENT 12</text>
+             <text x="298" y="318" font-size="13" font-weight="700" fill="#0f172a">Brand Standards</text>
+             <text x="298" y="336" font-size="10" font-weight="700" fill="#166534" letter-spacing="1">FULL — Writer replaces</text></g>
+          <g><rect x="282" y="358" width="200" height="76" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+             <text x="298" y="382" font-size="11" fill="#92400e" font-weight="600">AGENT 16</text>
+             <text x="298" y="404" font-size="13" font-weight="700" fill="#0f172a">Translation Governance</text>
+             <text x="298" y="422" font-size="10" font-weight="700" fill="#92400e" letter-spacing="1">PARTIAL — drafting only</text></g>
+
+          <!-- COLUMN 3: 03 partial, 04 partial, 06 partial -->
+          <g><rect x="522" y="100" width="200" height="76" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+             <text x="538" y="124" font-size="11" fill="#92400e" font-weight="600">AGENT 03</text>
+             <text x="538" y="146" font-size="13" font-weight="700" fill="#0f172a">508(c) Detection</text>
+             <text x="538" y="164" font-size="10" font-weight="700" fill="#92400e" letter-spacing="1">PARTIAL — authorship-time</text></g>
+          <g><rect x="522" y="186" width="200" height="76" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+             <text x="538" y="210" font-size="11" fill="#92400e" font-weight="600">AGENT 04</text>
+             <text x="538" y="232" font-size="13" font-weight="700" fill="#0f172a">508(c) Remediation</text>
+             <text x="538" y="250" font-size="10" font-weight="700" fill="#92400e" letter-spacing="1">PARTIAL — suggestions</text></g>
+          <g><rect x="522" y="272" width="200" height="76" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+             <text x="538" y="296" font-size="11" fill="#92400e" font-weight="600">AGENT 06</text>
+             <text x="538" y="318" font-size="13" font-weight="700" fill="#0f172a">Content Governance</text>
+             <text x="538" y="336" font-size="10" font-weight="700" fill="#92400e" letter-spacing="1">PARTIAL — content rules</text></g>
+
+          <!-- COLUMN 4: all GAP -->
+          <g><rect x="762" y="100" width="200" height="76" rx="6" fill="white" stroke="#94a3b8"/>
+             <rect x="762" y="100" width="200" height="76" rx="6" fill="url(#hatch)" fill-opacity="0.45"/>
+             <rect x="762" y="100" width="200" height="76" rx="6" fill="none" stroke="#94a3b8"/>
+             <text x="778" y="124" font-size="11" fill="#64748b" font-weight="600">AGENT 08</text>
+             <text x="778" y="146" font-size="13" font-weight="700" fill="#475569">Suppression &amp; Deflection</text>
+             <text x="778" y="164" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+          <g><rect x="762" y="186" width="200" height="76" rx="6" fill="white" stroke="#94a3b8"/>
+             <rect x="762" y="186" width="200" height="76" rx="6" fill="url(#hatch)" fill-opacity="0.45"/>
+             <rect x="762" y="186" width="200" height="76" rx="6" fill="none" stroke="#94a3b8"/>
+             <text x="778" y="210" font-size="11" fill="#64748b" font-weight="600">AGENT 14</text>
+             <text x="778" y="232" font-size="13" font-weight="700" fill="#475569">Member History</text>
+             <text x="778" y="250" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+          <g><rect x="762" y="272" width="200" height="76" rx="6" fill="white" stroke="#94a3b8"/>
+             <rect x="762" y="272" width="200" height="76" rx="6" fill="url(#hatch)" fill-opacity="0.45"/>
+             <rect x="762" y="272" width="200" height="76" rx="6" fill="none" stroke="#94a3b8"/>
+             <text x="778" y="296" font-size="11" fill="#64748b" font-weight="600">AGENT 09</text>
+             <text x="778" y="318" font-size="13" font-weight="700" fill="#475569">Downstream QA</text>
+             <text x="778" y="336" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+          <g><rect x="762" y="358" width="200" height="76" rx="6" fill="white" stroke="#94a3b8"/>
+             <rect x="762" y="358" width="200" height="76" rx="6" fill="url(#hatch)" fill-opacity="0.45"/>
+             <rect x="762" y="358" width="200" height="76" rx="6" fill="none" stroke="#94a3b8"/>
+             <text x="778" y="382" font-size="11" fill="#64748b" font-weight="600">AGENT 10</text>
+             <text x="778" y="404" font-size="13" font-weight="700" fill="#475569">Vendor Intelligence</text>
+             <text x="778" y="422" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+
+          <!-- COLUMN 5: all GAP -->
+          <g><rect x="982" y="100" width="200" height="76" rx="6" fill="white" stroke="#94a3b8"/>
+             <rect x="982" y="100" width="200" height="76" rx="6" fill="url(#hatch)" fill-opacity="0.45"/>
+             <rect x="982" y="100" width="200" height="76" rx="6" fill="none" stroke="#94a3b8"/>
+             <text x="998" y="124" font-size="11" fill="#64748b" font-weight="600">AGENT 15</text>
+             <text x="998" y="146" font-size="13" font-weight="700" fill="#475569">Cost Attribution</text>
+             <text x="998" y="164" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+          <g><rect x="982" y="186" width="200" height="76" rx="6" fill="white" stroke="#94a3b8"/>
+             <rect x="982" y="186" width="200" height="76" rx="6" fill="url(#hatch)" fill-opacity="0.45"/>
+             <rect x="982" y="186" width="200" height="76" rx="6" fill="none" stroke="#94a3b8"/>
+             <text x="998" y="210" font-size="11" fill="#64748b" font-weight="600">AGENT 17</text>
+             <text x="998" y="232" font-size="13" font-weight="700" fill="#475569">Migration Prioritization</text>
+             <text x="998" y="250" font-size="10" font-weight="700" fill="#475569" letter-spacing="1">GAP — BUILD</text></g>
+
+          <!-- SUMMARY STRIP -->
+          <rect x="42" y="465" width="1116" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+          <text x="64" y="488" font-size="13" font-weight="700" fill="#582C83">WRITER COVERAGE TOTAL</text>
+          <rect x="260" y="475" width="14" height="14" rx="3" fill="#dcfce7" stroke="#16a34a"/>
+          <text x="282" y="487" font-size="12" fill="#0f172a"><tspan font-weight="700">2 Full</tspan> — Tone (05), Brand (12)</text>
+          <rect x="260" y="500" width="14" height="14" rx="3" fill="#fffbeb" stroke="#f59e0b"/>
+          <text x="282" y="512" font-size="12" fill="#0f172a"><tspan font-weight="700">6 Partial</tspan> — Digitization (02), 508(c) Detection (03), 508(c) Remediation (04), Content Governance (06), Mandate Impact (11), Translation (16)</text>
+          <rect x="780" y="475" width="14" height="14" rx="3" fill="white" stroke="#94a3b8"/>
+          <rect x="780" y="475" width="14" height="14" rx="3" fill="url(#hatch)" fill-opacity="0.55"/>
+          <text x="802" y="487" font-size="12" fill="#0f172a"><tspan font-weight="700">9 Gap</tspan> — Agents 01, 07, 08, 09, 10, 13, 14, 15, 17 must be built</text>
+        </svg>
+      </div>
+      <div class="legend-row">
+        <span class="lg"><span class="swatch" style="background:#dcfce7;border-color:#16a34a"></span><b>Full</b> — Writer replaces this agent</span>
+        <span class="lg"><span class="swatch" style="background:#fffbeb;border-color:#f59e0b"></span><b>Partial</b> — Writer covers authoring layer; governance/pipeline must be built</span>
+        <span class="lg"><span class="swatch" style="background:#f1f5f9;border-color:#94a3b8"></span><b>Gap</b> — No Writer coverage; must be built by Elevance</span>
+      </div>
+      <p class="footnote">Categorization derived from the capability matrix in <i>Writer AI vs. Agentic Print — Build vs. Buy</i>. "Partial" means Writer addresses the authoring or generation aspect of the agent only; the governance, pipeline, audit, and integration scope of that agent remains a build.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btnLife = document.getElementById('btn-life');
+  const btnWriter = document.getElementById('btn-writer');
+  const vLife = document.getElementById('view-life');
+  const vWriter = document.getElementById('view-writer');
+  function show(view) {
+    if (view === 'life') {
+      vLife.classList.add('active'); vWriter.classList.remove('active');
+      btnLife.classList.add('active'); btnWriter.classList.remove('active');
+    } else {
+      vWriter.classList.add('active'); vLife.classList.remove('active');
+      btnWriter.classList.add('active'); btnLife.classList.remove('active');
+    }
+  }
+  btnLife.addEventListener('click', () => show('life'));
+  btnWriter.addEventListener('click', () => show('writer'));
+</script>
+</body>
+</html>
